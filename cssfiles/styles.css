@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4c88e3;
+    color: white;
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.header-container .logo {
+    height: 50px;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0;
+    padding: 10px 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #ccc;
+    gap: 10px;
+}
+
+.filter-bar button,
+.filter-bar select {
+    background-color: #316eaf;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+.filter-bar button.active {
+    background-color: #3E8E41;
+}
+
+.filter-bar button.active:hover {
+    background-color: #548f56;
+}
+
+.filter-bar button:hover,
+.filter-bar select:hover {
+    background-color: #39537b;
+}
+
+.auction-info {
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.countdown {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.lot-list {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.lot-item {
+    background-color: white;
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    display: flex;
+    gap: 20px;
+}
+
+.lot-item img {
+    width: 300px;
+    height: auto;
+}
+
+.lot-details {
+    flex: 1;
+}
+
+.lot-details h2 {
+    margin-top: 0;
+}
+
+button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #007bb5;
+}
+
+footer {
+    background-color: #4c88e3;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container,
+    .filter-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .filter-bar button,
+    .filter-bar select {
+        margin-bottom: 10px;
+        width: 100%;
+        max-width: 300px;
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lilami Auction</title>
+    <link rel="stylesheet" href="./cssfiles/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="lilami.png" alt="Lilami Logo" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="filter-bar">
+        <button>All Lots</button>
+        <button class="active">Active Lots</button>
+        <button>Preparing Lots</button>
+        <select>
+            <option>Category: All Categories</option>
+            <option>Appliances</option>
+            <option>Audio & Video</option>
+            <option>Computers</option>
+            <option>Furniture</option>
+            <option>Miscellaneous</option>
+            <option>Vehicle</option>
+        </select>
+    </div>
+
+    <div class="auction-info">
+        <p><strong>CLOSURE DATE:</strong> AUGUST 18, 2024, 22:00 GMT+0545 (NEPAL TIME)</p>
+        <div id="countdown" class="countdown">
+        </div>
+        <p><strong>Prices in NPR (र)</strong></p>
+    </div>
+
+    <div class="lot-list">
+        <div class="lot-item">
+            <img src="./lenovo.jpeg" alt="Lenovo ThinkCenter">
+            <div class="lot-details">
+                <h2>LOT 1</h2>
+                <p><strong>Current price:</strong> NPR 41,000.00</p>
+                <p><strong>Condition:</strong> Unknown</p>
+                <p>LENOVO THINKCENTER CPU - 1 UNIT, LENOVO 24" MONITOR - 2 UNITS, HP PRINTER - 1 UNIT, KEYBOARD, SPEAKER, AND MOUSE - 1/1 UNIT...</p>
+                <p><em>Note: These items are used and sold without any warranty or guarantee. The buyer must take the items on an "AS-IS" basis. Payment must be made at ADBL Bank, Nayabazar within 2 days after the auction closes.</em></p>
+                <button>VIEW THIS LOT</button>
+            </div>
+        </div>
+    </div>
+    
+
+    <footer>
+        <p>&copy; 2024 Lilami Auction</p>
+    </footer>
+
+    <script src="./jsfiles/script.js"></script>
+</body>
+</html>
