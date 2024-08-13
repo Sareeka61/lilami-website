@@ -1,32 +1,31 @@
 <?php
 require_once '../../config/database.php';
 require_once '../../models/Item.php';
-require_once '../../middleware/authenticateJWT.php'; 
+include '../../cors.php';
 
-$auth = new AuthenticateJWT();
+// require_once '../../middleware/authenticateJWT.php'; 
 
-$auth->validateToken();
+// $auth = new AuthenticateJWT();
 
-$user = $_SESSION['user']->data; 
-if ($user->role != 'bank') {
-    http_response_code(403); // Forbidden
-    echo json_encode(array("message" => "Access denied. Banks only."));
-    exit();
-}
+// $auth->validateToken();
 
-// Retrieve input data
-$data = json_decode(file_get_contents("php://input"));
+// $user = $_SESSION['user']->data; 
+// if ($user->role != 'bank') {
+//     http_response_code(403); // Forbidden
+//     echo json_encode(array("message" => "Access denied. Banks only."));
+//     exit();
+// }
 
-// Check if bank username is provided
-if (isset($data->username)) {
-    $username = htmlspecialchars(strip_tags($data->username));
-    
+// Retrieve query parameter
+$bankUsername = isset($_GET['bank']) ? htmlspecialchars(strip_tags($_GET['bank'])) : null;
+
+if ($bankUsername) {
     $db = getDatabaseConnection();
     
     // Fetch user ID for the given username
     $query = "SELECT id FROM users WHERE username = :username AND role = 'bank'";
     $stmt = $db->prepare($query);
-    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':username', $bankUsername);
     $stmt->execute();
     
     if ($stmt->rowCount() > 0) {

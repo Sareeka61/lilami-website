@@ -15,8 +15,9 @@
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="./register.html">Register</a></li>
-                    <li><a href="./login.html">Login</a></li>
+                    <li id="register-link"><a href="./register.html">Register</a></li>
+                    <li id="login-link"><a href="./login.html">Login</a></li>    
+                    <li id="username-display" style="display: none;"></li>
                 </ul>
             </nav>
         </div>
@@ -35,46 +36,94 @@
     </section>
 
     <section class="join-lilami">
-       <a href="./register.html"> <h2>Join Lilami Today</h2></a>
+        <a href="./register.html"><h2>Join Lilami Today</h2></a>
     </section>
 
     <section class="banks-section">
-        <div class="cards-container">
-            <div class="bank-card">
-                <img src="./images/nabilbank.png" alt="Bank Logo" class="bank-logo">
-                <h3 class="bank-name">Nabil Bank- Malepatan</h3>
-                <p class="bank-description">A brief description of the bank goes here. This can include information about the bank's history, services, or any other relevant details.</p>
-                <p class="items-count"><strong>Number of Items:</strong> 25</p>
-                <p class="auction-date"><strong>Auction Date:</strong> September 15, 2024</p>
-                <a href="items.html" class="view-items-btn">VIEW THE ITEMS</a>
-            </div>
-        </div>
-        <div class="cards-container">
-            <div class="bank-card">
-                <img src="./images/nepalbank.png" alt="Bank Logo" class="bank-logo">
-                <h3 class="bank-name">Nepal Bank Ltd- Bagar</h3>
-                <p class="bank-description">A brief description of the bank goes here. This can include information about the bank's history, services, or any other relevant details.</p>
-                <p class="items-count"><strong>Number of Items:</strong> 25</p>
-                <p class="auction-date"><strong>Auction Date:</strong> September 15, 2024</p>
-                <a href="items.html" class="view-items-btn">VIEW THE ITEMS</a>
-            </div>
-        </div>
-        <div class="cards-container">
-            <div class="bank-card">
-                <img src="./images/banklogo.jpeg" alt="Bank Logo" class="bank-logo">
-                <h3 class="bank-name">ADBL- Nayabazar</h3>
-                <p class="bank-description">A brief description of the bank goes here. This can include information about the bank's history, services, or any other relevant details.</p>
-                <p class="items-count"><strong>Number of Items:</strong> 25</p>
-                <p class="auction-date"><strong>Auction Date:</strong> September 15, 2024</p>
-                <a href="items.html" class="view-items-btn">VIEW THE ITEMS</a>
-            </div>
-        </div>
     </section>
 
     <footer>
         <p>&copy; 2024 Lilami Online</p>
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const usernameDisplay = document.getElementById("username-display");
+            const registerLink = document.getElementById("register-link");
+            const loginLink = document.getElementById("login-link");
+            const username = localStorage.getItem("username");
+
+            if (username) {
+                usernameDisplay.textContent = `Welcome, ${username}!`;
+                usernameDisplay.style.display = "inline"; // Show the username
+                registerLink.style.display = "none"; // Hide Register link
+                loginLink.style.display = "none"; // Hide Login link
+            } else {
+                usernameDisplay.style.display = "none"; // Hide the username
+                registerLink.style.display = "inline"; // Show Register link
+                loginLink.style.display = "inline"; // Show Login link
+            }
+
+            const banksSection = document.querySelector('.banks-section');
+
+            fetch('http://localhost:8000/api/user/list_banks.php')
+                .then(response => response.json())
+                .then(data => {
+                    const { banks } = data;
+                    banksSection.innerHTML = '';
+
+                    banks.forEach(bank => {
+                        const bankCard = document.createElement('div');
+                        bankCard.className = 'cards-container';
+
+                        bankCard.innerHTML = `
+                            <div class="bank-card">
+                                <img src="${bank.image_url || './images/nabilbank.jpg'}" alt="Bank Logo" class="bank-logo">
+                                <h3 class="bank-name">${bank.username}</h3>
+                                <p class="bank-description">${bank.bio || 'A brief description of the bank goes here.'}</p>
+                                <p class="items-count"><strong>Number of Items:</strong> Loading...</p>
+                                <p class="auction-date"><strong>Auction Date:</strong> September 15, 2024</p>
+                                <a href="items.html?bank=${bank.username}" class="view-items-btn">VIEW THE ITEMS</a>
+                            </div>
+                        `;
+                        
+                        banksSection.appendChild(bankCard);
+
+                        // Fetch and update item count for each bank
+                        fetchItemsByBank(bank.username);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching bank data:', error);
+                });
+
+            // Function to fetch items created by a specific bank and update the HTML
+            async function fetchItemsByBank(bankUsername) {
+                try {
+                    const response = await fetch(`http://localhost:8000/api/item/list_items_by_bank.php?bank=${bankUsername}`);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const items = await response.json();
+                    
+                    // Count the number of items
+                    const itemCount = items.length;
+
+                    // Update the HTML with the item count
+                    const bankCards = document.querySelectorAll('.bank-card');
+                    bankCards.forEach(card => {
+                        const bankName = card.querySelector('.bank-name').textContent.trim();
+                        if (bankName === bankUsername) {
+                            const itemsCountElement = card.querySelector('.items-count');
+                            itemsCountElement.innerHTML = `<strong>Number of Items:</strong> ${itemCount}`;
+                        }
+                    });
+                } catch (error) {
+                    console.error('There was a problem with the fetch operation:', error);
+                }
+            }
+        });
+    </script>
     <script src="./jsfiles/script.js"></script>
 </body>
 

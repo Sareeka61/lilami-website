@@ -23,9 +23,8 @@
   </header>
 
   <div class="filter-bar">
-    <button>All Lots</button>
-    <button class="active">Active Lots</button>
-    <button>Preparing Lots</button>
+    <button>All Items</button>
+    <button class="active">Active Items</button>
     <select>
       <option>Category: All Categories</option>
       <option>Appliances</option>
@@ -42,52 +41,69 @@
     <div id="countdown" class="countdown"></div>
   </div>
 
-  <div class="lot-list">
-    <div class="lot-item">
-      <div class="lot-image">
-        <img src="./images/lenovo.jpeg" alt="Lenovo ThinkCenter">
-      </div>
-      <div class="lot-content">
-        <h2>LOT 1</h2>
-        <p class="price"><strong>Current price:</strong> NPR 41,000.00</p>
-        <p class="condition"><strong>Condition:</strong> Unknown</p>
-        <p class="description">LENOVO THINKCENTER CPU - 1 UNIT, LENOVO 24" MONITOR - 2 UNITS, HP PRINTER - 1 UNIT, KEYBOARD, SPEAKER, AND MOUSE...</p>
-        <a href="dialog.html" class="view-lot-btn" data-lot="1">VIEW THIS LOT</a>
-      </div>
-    </div>
-  </div>
-  <div class="lot-list">
-    <div class="lot-item">
-      <div class="lot-image">
-        <img src="./images/lenovo.jpeg" alt="Lenovo ThinkCenter">
-      </div>
-      <div class="lot-content">
-        <h2>LOT 1</h2>
-        <p class="price"><strong>Current price:</strong> NPR 41,000.00</p>
-        <p class="condition"><strong>Condition:</strong> Unknown</p>
-        <p class="description">LENOVO THINKCENTER CPU - 1 UNIT, LENOVO 24" MONITOR - 2 UNITS, HP PRINTER - 1 UNIT, KEYBOARD, SPEAKER, AND MOUSE...</p>
-        <a href="dialog.html" class="view-lot-btn" data-lot="1">VIEW THIS LOT</a>
-      </div>
-    </div>
-  </div>
-  <div class="lot-list">
-    <div class="lot-item">
-      <div class="lot-image">
-        <img src="./images/lenovo.jpeg" alt="Lenovo ThinkCenter">
-      </div>
-      <div class="lot-content">
-        <h2>LOT 1</h2>
-        <p class="price"><strong>Current price:</strong> NPR 41,000.00</p>
-        <p class="condition"><strong>Condition:</strong> Unknown</p>
-        <p class="description">LENOVO THINKCENTER CPU - 1 UNIT, LENOVO 24" MONITOR - 2 UNITS, HP PRINTER - 1 UNIT, KEYBOARD, SPEAKER, AND MOUSE...</p>
-        <a href="dialog.html" class="view-lot-btn" data-lot="1">VIEW THIS LOT</a>
-      </div>
-    </div>
+  <div class="items">
+    
+
   </div>
 
   <footer>
     <p>&copy; 2024 Lilami Online</p>
   </footer>
+
+  <script>
+document.addEventListener("DOMContentLoaded", async function() {
+    const itemsSection = document.querySelector('.items');
+    const urlParams = new URLSearchParams(window.location.search);
+    const bankName = urlParams.get('bank');
+
+    if (!bankName) {
+        itemsSection.innerHTML = '<p>No bank specified.</p>';
+        return;
+    }
+
+    try {
+        // Fetch items based on the bank name
+        const response = await fetch(`http://localhost:8000/api/item/list_items_by_bank.php?bank=${bankName}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        const items = await response.json();
+
+        // Clear existing content
+        itemsSection.innerHTML = '';
+
+        // Check if items are available
+        if (Array.isArray(items) && items.length > 0) {
+            // Map through items and generate HTML
+            items.forEach(item => {
+                const itemHTML = `
+                    <div class="lot-list">
+                        <div class="lot-item">
+                            <div class="lot-image">
+                                <img src="${item.image_url || './images/placeholder.png'}" alt="${item.title}">
+                            </div>
+                            <div class="lot-content">
+                                <h2>LOT ${item.id}</h2>
+                                <p class="price"><strong>Current price:</strong> NPR ${item.current_price.toLocaleString()}</p>
+                                <p class="condition"><strong>Condition:</strong> ${item.condition || 'Unknown'}</p>
+                                <p class="description">${item.description || 'No description available.'}</p>
+                                <a href="dialog.html?id=${item.id}" class="view-lot-btn" data-lot="${item.id}">VIEW THIS LOT</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                itemsSection.insertAdjacentHTML('beforeend', itemHTML);
+            });
+        } else {
+            itemsSection.innerHTML = '<p>No items found for this bank.</p>';
+        }
+    } catch (error) {
+        console.error('Error fetching items:', error);
+        itemsSection.innerHTML = '<p>Failed to load items. Please try again later.</p>';
+    }
+});
+
+  </script>
 
   <script src="./jsfiles/script.js"></script>
 </body>
