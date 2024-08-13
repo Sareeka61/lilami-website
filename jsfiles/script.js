@@ -1,6 +1,6 @@
-// JavaScript for countdown timer
+// Countdown timer
 const countdownElement = document.querySelector('.countdown');
-const targetDate = new Date("Aug 18, 2024 22:00:00").getTime();
+const targetDate = new Date("Aug 18, 2024 22:00:00 GMT+0545").getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
@@ -12,10 +12,10 @@ function updateCountdown() {
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     countdownElement.innerHTML = `
-        <span>${days} DAYS</span>
-        <span>${hours} HOURS</span>
-        <span>${minutes} MINUTES</span>
-        <span>${seconds} SECONDS</span>
+        <span>${days}</span><span>DAYS</span>
+        <span>${hours}</span><span>HOURS</span>
+        <span>${minutes}</span><span>MINUTES</span>
+        <span>${seconds}</span><span>SECONDS</span>
     `;
 
     if (distance < 0) {

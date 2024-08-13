@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lot Details</title>
+    <link rel="stylesheet" href="./cssfiles/dialog.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="./index.html">
+            <img src="./images/logo2.png" alt="Lilami Logo" class="logo">
+        </a>
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./register.html">Register</a></li>
+                    <li><a href="./login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="lot-details-container">
+        <button id="go-back">Go Back</button>
+
+        <div class="lot-details-content">
+            <div class="lot-gallery">
+                <img id="lot-image" src="./images/furniture.jpeg" alt="Lot Image">
+            </div>
+
+            <div class="bidding-info">
+              <div class="condition-box">
+                <p><strong>Condition:</strong> Usable</p>
+            </div>
+            <div class="description-box">
+                <p><strong>Description:</strong> This is a furniture.</p>
+            </div>
+            
+                <p><strong>Current Price:</strong> <span id="lot-price">Rs.500</span></p>
+                <p><strong>Your Bid:</strong> <input type="number" id="your-bid" value="0"></p>
+                <p><strong>Total Bids:</strong> <span id="total-bids">10</span></p>
+                <button id="place-bid">Place Bid</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Lilami Online</p>
+    </footer>
+    
+    <script src="./jsfiles/dialog-script.js"></script>
+</body>
+</html>

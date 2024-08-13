@@ -1,66 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lilami Auction</title>
     <link rel="stylesheet" href="./cssfiles/styles.css">
 </head>
+
 <body>
     <header>
         <div class="header-container">
-            <img src="lilami.png" alt="Lilami Logo" class="logo">
+            <img src="./images/logo2.png" alt="Lilami Logo" class="logo">
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Register</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="./register.html">Register</a></li>
+                    <li><a href="./login.html">Login</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="filter-bar">
-        <button>All Lots</button>
-        <button class="active">Active Lots</button>
-        <button>Preparing Lots</button>
-        <select>
-            <option>Category: All Categories</option>
-            <option>Appliances</option>
-            <option>Audio & Video</option>
-            <option>Computers</option>
-            <option>Furniture</option>
-            <option>Miscellaneous</option>
-            <option>Vehicle</option>
-        </select>
-    </div>
-
-    <div class="auction-info">
-        <p><strong>CLOSURE DATE:</strong> AUGUST 18, 2024, 22:00 GMT+0545 (NEPAL TIME)</p>
-        <div id="countdown" class="countdown">
-        </div>
-        <p><strong>Prices in NPR (र)</strong></p>
-    </div>
-
-    <div class="lot-list">
-        <div class="lot-item">
-            <img src="./lenovo.jpeg" alt="Lenovo ThinkCenter">
-            <div class="lot-details">
-                <h2>LOT 1</h2>
-                <p><strong>Current price:</strong> NPR 41,000.00</p>
-                <p><strong>Condition:</strong> Unknown</p>
-                <p>LENOVO THINKCENTER CPU - 1 UNIT, LENOVO 24" MONITOR - 2 UNITS, HP PRINTER - 1 UNIT, KEYBOARD, SPEAKER, AND MOUSE - 1/1 UNIT...</p>
-                <p><em>Note: These items are used and sold without any warranty or guarantee. The buyer must take the items on an "AS-IS" basis. Payment must be made at ADBL Bank, Nayabazar within 2 days after the auction closes.</em></p>
-                <button>VIEW THIS LOT</button>
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Experience the Thrill of Auctions at Lilami</h1>
+                <p>Discover an exceptional platform for bidding on rare finds, cutting-edge gadgets, and timeless antiques. Lilami offers a seamless and secure auction experience tailored for collectors and enthusiasts. Join us today and start bidding on your next extraordinary treasure!</p>
+            </div>
+            <div class="hero-image-container">
+                <img src="./images/lilamionline.jpg" alt="Lilami Online" class="hero-image">
             </div>
         </div>
-    </div>
-    
+    </section>
+
+    <section class="join-lilami">
+       <a href="./register.html"> <h2>Join Lilami Today</h2></a>
+    </section>
+
+    <section class="banks-section">
+        <div class="cards-container">
+            <div class="bank-card">
+                <img src="./images/nabilbank.png" alt="Bank Logo" class="bank-logo">
+                <h3 class="bank-name">Nabil Bank- Malepatan</h3>
+                <p class="bank-description">A brief description of the bank goes here. This can include information about the bank's history, services, or any other relevant details.</p>
+                <p class="items-count"><strong>Number of Items:</strong> 25</p>
+                <p class="auction-date"><strong>Auction Date:</strong> September 15, 2024</p>
+                <a href="items.html" class="view-items-btn">VIEW THE ITEMS</a>
+            </div>
+        </div>
+        <div class="cards-container">
+            <div class="bank-card">
+                <img src="./images/nepalbank.png" alt="Bank Logo" class="bank-logo">
+                <h3 class="bank-name">Nepal Bank Ltd- Bagar</h3>
+                <p class="bank-description">A brief description of the bank goes here. This can include information about the bank's history, services, or any other relevant details.</p>
+                <p class="items-count"><strong>Number of Items:</strong> 25</p>
+                <p class="auction-date"><strong>Auction Date:</strong> September 15, 2024</p>
+                <a href="items.html" class="view-items-btn">VIEW THE ITEMS</a>
+            </div>
+        </div>
+        <div class="cards-container">
+            <div class="bank-card">
+                <img src="./images/banklogo.jpeg" alt="Bank Logo" class="bank-logo">
+                <h3 class="bank-name">ADBL- Nayabazar</h3>
+                <p class="bank-description">A brief description of the bank goes here. This can include information about the bank's history, services, or any other relevant details.</p>
+                <p class="items-count"><strong>Number of Items:</strong> 25</p>
+                <p class="auction-date"><strong>Auction Date:</strong> September 15, 2024</p>
+                <a href="items.html" class="view-items-btn">VIEW THE ITEMS</a>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2024 Lilami Auction</p>
+        <p>&copy; 2024 Lilami Online</p>
     </footer>
 
     <script src="./jsfiles/script.js"></script>
 </body>
+
 </html>

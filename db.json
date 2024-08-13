@@ -1,0 +1,60 @@
+{
+    "lots": [
+      {
+        "id": 1,
+        "title": "LOT 1",
+        "image": "./images/lenovo.jpeg",
+        "condition": "Unknown",
+        "description": "LENOVO THINKCENTER CPU - 1 UNIT, LENOVO 24\" MONITOR - 2 UNITS, HP PRINTER - 1 UNIT, KEYBOARD, SPEAKER, AND MOUSE - 1/1 UNIT. Note: These items are used and sold without any warranty or guarantee. The buyer must take the items on an \"AS-IS\" basis. Payment must be made at ADBL Bank, Nayabazar within 2 days after the auction closes.",
+        "bids": 7,
+        "price": "NPR 41,000.00",
+        "minIncrease": "NPR 1,000.00",
+        "maxIncrease": "NPR 5,000.00"
+      },
+      {
+        "id": 2,
+        "title": "LOT 2",
+        "image": "./images/camera.jpeg",
+        "condition": "Good",
+        "description": "CANON EOS 5D MARK IV CAMERA - 1 UNIT, WITH 24-70MM LENS. Note: The camera is in good working condition, but the buyer should check the lens quality before purchase. Payment must be made at ADBL Bank, Nayabazar within 2 days after the auction closes.",
+        "bids": 15,
+        "price": "NPR 85,000.00",
+        "minIncrease": "NPR 2,000.00",
+        "maxIncrease": "NPR 10,000.00"
+      },
+      {
+        "id": 3,
+        "title": "LOT 3",
+        "image": "./images/furniture.jpeg",
+        "condition": "Used",
+        "description": "WOODEN DINING TABLE - 1 UNIT, WITH 4 CHAIRS. The table and chairs are used but in fair condition. The buyer must check the items before purchase. Payment must be made at ADBL Bank, Nayabazar within 2 days after the auction closes.",
+        "bids": 3,
+        "price": "NPR 20,000.00",
+        "minIncrease": "NPR 500.00",
+        "maxIncrease": "NPR 3,000.00"
+      },
+      {
+        "id": 4,
+        "title": "LOT 4",
+        "image": "./images/phone.jpeg",
+        "condition": "New",
+        "description": "SAMSUNG GALAXY S21 SMARTPHONE - 1 UNIT, 128GB STORAGE, BLACK COLOR. The phone is brand new and still in its original packaging. Payment must be made at ADBL Bank, Nayabazar within 2 days after the auction closes.",
+        "bids": 5,
+        "price": "NPR 75,000.00",
+        "minIncrease": "NPR 1,500.00",
+        "maxIncrease": "NPR 5,000.00"
+      },
+      {
+        "id": 5,
+        "title": "LOT 5",
+        "image": "./images/bike.jpeg",
+        "condition": "Fair",
+        "description": "YAMAHA FZ V2 MOTORBIKE - 1 UNIT, 150CC, 2019 MODEL. The bike is in fair condition with normal wear and tear. The buyer should test ride the bike before purchase. Payment must be made at ADBL Bank, Nayabazar within 2 days after the auction closes.",
+        "bids": 8,
+        "price": "NPR 60,000.00",
+        "minIncrease": "NPR 2,000.00",
+        "maxIncrease": "NPR 6,000.00"
+      }
+    ]
+  }
+  

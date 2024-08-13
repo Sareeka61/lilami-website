@@ -1,0 +1,182 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #083C63;
+    color: white;
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.header-container .logo {
+    height: 50px;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+nav ul li:nth-child(3) a {
+    background-color: white;
+    color: #083C63;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+nav ul li:nth-child(3) a:hover {
+    background-color: #083C63;
+    border: 1px solid white;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.lot-details-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#go-back {
+    background-color: #083C63;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#go-back:hover {
+    background-color: #287E74;
+}
+
+.lot-details-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lot-gallery {
+    flex: 1;
+    max-width: 50%;
+}
+
+.lot-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.condition-box {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.description-box {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.bidding-info {
+    flex: 1;
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+}
+
+.bidding-info p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.bidding-info #your-bid {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-top: 5px;
+}
+
+#place-bid {
+    background-color: #3E8E41;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 20px;
+}
+
+#place-bid:hover {
+    background-color: #548f56;
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #2c5472;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .lot-details-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lot-gallery, .bidding-info {
+        max-width: 100%;
+    }
+
+    #go-back {
+        align-self: center;
+    }
+}
