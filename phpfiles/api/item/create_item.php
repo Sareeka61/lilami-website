@@ -20,6 +20,7 @@ $user = $_SESSION['user']->data;
 
 $db = getDatabaseConnection();
 
+print_r($data);
 $data = json_decode(file_get_contents("php://input"));
 if (isset($data->item_number, $data->title, $data->current_price, $data->item_condition, $data->description, $data->note, $data->image_url, $data->end_date)) {
     $creator_id = $user->id;
@@ -27,13 +28,9 @@ if (isset($data->item_number, $data->title, $data->current_price, $data->item_co
 
     $result = createItem($db, $data->item_number, $data->title, $data->current_price, $data->item_condition, $data->description, $data->note, $data->image_url, $creator_id, $end_date);
 
-    if ($result) {
-        http_response_code(201);
-        echo json_encode(array("message" => "Item created successfully."));
-    } else {
-        http_response_code(500);
-        echo json_encode(array("message" => "Unable to create item."));
-    }
+    http_response_code(201);
+    echo json_encode(array("message" => "Item created successfully."));
+ 
 } else {
     http_response_code(400);
     echo json_encode(array("message" => "Incomplete data."));

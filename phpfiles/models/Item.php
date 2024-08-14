@@ -1,17 +1,30 @@
 <?php
-function createItem($db, $item_number, $title, $current_price, $item_condition, $description, $note, $image_url) {
-    $query = "INSERT INTO items SET item_number=:item_number, title=:title, current_price=:current_price, item_condition=:item_condition, description=:description, note=:note, image_url=:image_url";
+function createItem($db, $item_number, $title, $current_price, $condition, $description, $note, $image_url, $creator_id, $end_date) {
+    $query = "INSERT INTO items (item_number, title, current_price, item_condition, description, note, image_url, creator_id, end_date) VALUES (:item_number, :title, :current_price, :item_condition, :description, :note, :image_url, :creator_id, :end_date)";
+
     $stmt = $db->prepare($query);
 
-    $stmt->bindParam(":item_number", htmlspecialchars(strip_tags($item_number)));
-    $stmt->bindParam(":title", htmlspecialchars(strip_tags($title)));
-    $stmt->bindParam(":current_price", $current_price);
-    $stmt->bindParam(":item_condition", htmlspecialchars(strip_tags($item_condition)));
-    $stmt->bindParam(":description", htmlspecialchars(strip_tags($description)));
-    $stmt->bindParam(":note", htmlspecialchars(strip_tags($note)));
-    $stmt->bindParam(":image_url", htmlspecialchars(strip_tags($image_url)));
+    // Use variables for each value
+    $itemNumber = $item_number;
+    $titleValue = $title;
+    $currentPrice = $current_price;
+    $conditionValue = $condition;
+    $descriptionValue = $description;
+    $noteValue = $note;
+    $imageUrl = $image_url;
+    $creatorId = $creator_id;
+    $endDate = $end_date;
 
-    return $stmt->execute();
+    $stmt->bindParam(':item_number', $itemNumber);
+    $stmt->bindParam(':title', $titleValue);
+    $stmt->bindParam(':current_price', $currentPrice);
+    $stmt->bindParam(':item_condition', $conditionValue);
+    $stmt->bindParam(':description', $descriptionValue);
+    $stmt->bindParam(':note', $noteValue);
+    $stmt->bindParam(':image_url', $imageUrl);
+    $stmt->bindParam(':creator_id', $creatorId);
+    $stmt->bindParam(':end_date', $endDate);
+
+    $stmt->execute();
 }
 ?>
-
