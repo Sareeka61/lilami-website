@@ -3,7 +3,7 @@ function getDatabaseConnection() {
     $host = "localhost";
     $db_name = "lilami";
     $username = "root";
-    $password = "root12345";
+    $password = "new_password";
     $conn = null;
 
     try {
