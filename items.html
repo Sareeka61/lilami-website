@@ -15,8 +15,9 @@
       <nav>
         <ul>
           <li><a href="./index.html">Home</a></li>
-          <li><a href="./register.html">Register</a></li>
-          <li><a href="./login.html">Login</a></li>
+          <li id="register-link"><a href="./register.html">Register</a></li>
+          <li id="login-link"><a href="./login.html">Login</a></li>    
+          <li id="username-display" style="display: none;"></li>
         </ul>
       </nav>
     </div>
@@ -52,6 +53,22 @@
 
   <script>
 document.addEventListener("DOMContentLoaded", async function() {
+            const usernameDisplay = document.getElementById("username-display");
+            const registerLink = document.getElementById("register-link");
+            const loginLink = document.getElementById("login-link");
+            const username = localStorage.getItem("username");
+
+            if (username) {
+                usernameDisplay.textContent = `Welcome, ${username}!`;
+                usernameDisplay.style.display = "inline"; // Show the username
+                registerLink.style.display = "none"; // Hide Register link
+                loginLink.style.display = "none"; // Hide Login link
+            } else {
+                usernameDisplay.style.display = "none"; // Hide the username
+                registerLink.style.display = "inline"; // Show Register link
+                loginLink.style.display = "inline"; // Show Login link
+            }
+
     const itemsSection = document.querySelector('.items');
     const urlParams = new URLSearchParams(window.location.search);
     const bankName = urlParams.get('bank');
@@ -83,7 +100,7 @@ document.addEventListener("DOMContentLoaded", async function() {
                                 <img src="${item.image_url || './images/placeholder.png'}" alt="${item.title}">
                             </div>
                             <div class="lot-content">
-                                <h2>LOT ${item.id}</h2>
+                                <h2>${item.title}</h2>
                                 <p class="price"><strong>Current price:</strong> NPR ${item.current_price.toLocaleString()}</p>
                                 <p class="condition"><strong>Condition:</strong> ${item.condition || 'Unknown'}</p>
                                 <p class="description">${item.description || 'No description available.'}</p>
